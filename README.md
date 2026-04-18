@@ -124,21 +124,3 @@ gold.dim_products   ──┘
 
 ---
 
-## How to Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: SQL analytics project"
-
-# Create a new repo on github.com, then:
-git remote add origin https://github.com/ganeshreddymaredla/sql-data-analytics-project.git
-git branch -M main
-git push -u origin main
-```
-
----
-
-## License
-
-MIT — free to use, modify, and share with attribution.
