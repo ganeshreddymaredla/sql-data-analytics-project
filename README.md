@@ -28,7 +28,8 @@ sql-analytics-guide/
 │   ├── 10_data_segmentation.sql
 │   ├── 11_part_to_whole_analysis.sql
 │   ├── 12_report_customers.sql
-│   └── 13_report_products.sql
+│   ├── 13_report_products.sql
+│   └── mysql/               ← MySQL-compatible versions of all scripts
 ├── .gitignore
 └── README.md
 ```
@@ -37,8 +38,13 @@ sql-analytics-guide/
 
 ## Prerequisites
 
-- SQL Server (2019+ recommended) or SQL Server Express (free)
+**SQL Server (default scripts)**
+- SQL Server 2019+ or SQL Server Express (free)
 - SQL Server Management Studio (SSMS) or Azure Data Studio
+
+**MySQL (alternative)**
+- MySQL 8.0+
+- MySQL Workbench or any MySQL client
 
 ---
 
@@ -47,8 +53,8 @@ sql-analytics-guide/
 ### Step 1 — Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sql-analytics-guide.git
-cd sql-analytics-guide
+git clone https://github.com/ganeshreddymaredla/sql-data-analytics-project.git
+cd sql-data-analytics-project
 ```
 
 ### Step 2 — Update the CSV file paths
@@ -60,6 +66,8 @@ where you cloned the repo on your machine. Example:
 BULK INSERT gold.dim_customers
 FROM 'C:\Projects\sql-analytics-guide\datasets\flat-files\dim_customers.csv'
 ```
+
+> MySQL users: open `scripts/mysql/00_init_database.sql` and update the `LOAD DATA INFILE` paths instead.
 
 ### Step 3 — Run the init script first
 
@@ -73,6 +81,9 @@ This will:
 
 Run each script sequentially (01 through 13). Each script is self-contained
 and builds on the database created in step 3.
+
+> MySQL users: run the scripts inside `scripts/mysql/` in the same order,
+> or use `scripts/mysql/run_all.sql` to execute everything at once.
 
 ---
 
@@ -116,13 +127,12 @@ gold.dim_products   ──┘
 ## How to Push to GitHub
 
 ```bash
-# Inside the sql-analytics-guide folder
 git init
 git add .
 git commit -m "Initial commit: SQL analytics project"
 
 # Create a new repo on github.com, then:
-git remote add origin https://github.com/YOUR_USERNAME/sql-analytics-guide.git
+git remote add origin https://github.com/ganeshreddymaredla/sql-data-analytics-project.git
 git branch -M main
 git push -u origin main
 ```
