@@ -1,0 +1,10 @@
+# SQL Server backup files (large binary, no need to track)
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
